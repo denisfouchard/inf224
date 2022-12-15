@@ -6,9 +6,10 @@
 
 class Photo : public Multimedia
 {
+
 private:
-    unsigned int height{};
-    unsigned int width{};
+    unsigned int height;
+    unsigned int width;
 
 public:
     Photo():Multimedia(){
@@ -39,8 +40,6 @@ public:
     }
 
 
-
 };
-
 
 #endif // PHOTO_H

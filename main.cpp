@@ -7,6 +7,7 @@
 #include "multimedia.h"
 #include "video.h"
 #include "photo.h"
+#include "film.h"
 using namespace std;
 
 int main(int argc, const char* argv[])
@@ -22,6 +23,12 @@ int main(int argc, const char* argv[])
     for (Multimedia* mult:mlist){
         mult->showObject(std::cout);
     };
+
+    Film* f = new Film();
+
+    unsigned int c [3] = {1,2,3};
+
+    f->setChapters(c, 3);
 
     return 0;
 }
