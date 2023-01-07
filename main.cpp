@@ -9,6 +9,7 @@
 #include "photo.h"
 #include "film.h"
 #include "group.h"
+#include <memory>
 
 using namespace std;
 
@@ -23,11 +24,13 @@ int main(int argc, const char* argv[])
 
     Group *g = new Group("Mes médias");
 
-    g->push_back(m);
-    g->push_back(v);
-    g->push_back(p);
+    SmartPtr media(v);
+
+    g->push_back(media);
 
     g->showGroup(std::cout);
+
+    g->remove(media);
 
     return 0;
 }

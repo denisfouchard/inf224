@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "multimedia.h"
 
+
 class Photo : public Multimedia
 {
 private:
@@ -21,7 +22,7 @@ public:
         width = width_;
     }
 
-    ~Photo(){};
+    ~Photo(){std::cout << "Object destroyed successfully.";};
 
     int getHeight(){return height;}
     int getWidth(){return width;}

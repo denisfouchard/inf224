@@ -27,6 +27,7 @@ public:
 
     ~Film(){
         delete chapters;
+        std::cout << "Object destroyed successfully.";
     };
 
     const unsigned int * getChapters() const {return chapters;}

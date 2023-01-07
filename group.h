@@ -4,18 +4,21 @@
 #endif // GROUP_H
 
 #include <list>
+#include <memory>
 #include "multimedia.h"
 
-class Group : public std::list<Multimedia*>{
+using SmartPtr = std::shared_ptr<Multimedia>;
+
+class Group : public std::list<SmartPtr>{
  private:
     std::string name;
 
  public:
-    Group() : std::list<Multimedia*>(){
+    Group() : std::list<SmartPtr>(){
        name = "unnamed_group";
     }
 
-    Group(std::string groupname_) : std::list<Multimedia*>(){
+    Group(std::string groupname_) : std::list<SmartPtr>(){
         name = groupname_;
     }
 
@@ -25,8 +28,8 @@ class Group : public std::list<Multimedia*>{
     std::string getGroupName(){return name;};
 
     void showGroup(std::ostream & s){
-        for (Multimedia *m : *this){
-            m->showObject(s);
+        for (std::list<SmartPtr>::iterator m = this->begin(); m != this->end(); m++){
+            m->get()->showObject(s);
         }
 
     }

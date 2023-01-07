@@ -18,7 +18,7 @@ public:
         duration = duration_;
     }
 
-    ~Video(){};
+    ~Video(){std::cout << "Object destroyed successfully.";};
 
     int getDuration() {return duration;};
 
