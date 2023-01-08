@@ -2,6 +2,7 @@
 #define VIDEO_H
 
 #include <stdlib.h>
+#include <iostream>
 #include "multimedia.h"
 
 class Video : public Multimedia

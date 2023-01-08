@@ -1,2 +1,3 @@
 multimedia.o: multimedia.cpp multimedia.h
-main.o: main.cpp multimedia.h video.h photo.h film.h group.h
+table.o: table.cpp multimedia.h table.h group.h photo.h video.h film.h
+main.o: main.cpp multimedia.h video.h photo.h film.h group.h table.h

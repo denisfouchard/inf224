@@ -2,6 +2,7 @@
 #define PHOTO_H
 
 #include <stdlib.h>
+#include <iostream>
 #include "multimedia.h"
 
 

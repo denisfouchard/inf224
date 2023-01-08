@@ -1,7 +1,7 @@
 #ifndef GROUP_H
 #define GROUP_H
 
-#endif // GROUP_H
+
 
 #include <list>
 #include <memory>
@@ -35,3 +35,4 @@ class Group : public std::list<SmartPtr>{
     }
 }
 ;
+#endif // GROUP_H

@@ -2,7 +2,10 @@
 #define FILM_H
 
 #include <stdlib.h>
+#include <iostream>
 #include "video.h"
+
+using namespace std;
 
 class Film : public Video
 {

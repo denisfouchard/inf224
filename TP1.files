@@ -5,3 +5,4 @@ multimedia.cpp
 multimedia.h
 photo.h
 video.h
+files.h
