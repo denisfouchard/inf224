@@ -1,8 +1,7 @@
-#ifndef VIDEO_H
-#define VIDEO_H
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
 
 #include <stdlib.h>
-#include <iostream>
 #include "multimedia.h"
 
 class Video : public Multimedia
@@ -19,9 +18,7 @@ public:
         duration = duration_;
     }
 
-    ~Video(){
-        std::cout << getTitle() << " destroyed successfully." << endl;
-    }
+    ~Video(){};
 
     int getDuration() {return duration;};
 
@@ -37,6 +34,10 @@ public:
         system(cmd.data());
     }
 
+
+
 };
+
+
 
 #endif // VIDEO_H

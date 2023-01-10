@@ -45,6 +45,26 @@
         "utility": "cpp",
         "iostream": "cpp",
         "istream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "__bit_reference": "cpp",
+        "__bits": "cpp",
+        "__config": "cpp",
+        "__debug": "cpp",
+        "__errc": "cpp",
+        "__locale": "cpp",
+        "__mutex_base": "cpp",
+        "__nullptr": "cpp",
+        "__string": "cpp",
+        "__threading_support": "cpp",
+        "__tuple": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "ios": "cpp",
+        "locale": "cpp",
+        "mutex": "cpp",
+        "ratio": "cpp",
+        "variant": "cpp"
     }
 }

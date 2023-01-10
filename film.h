@@ -30,8 +30,8 @@ public:
 
     ~Film(){
         delete chapters;
-        std::cout << "Object destroyed successfully.";
-    };
+        std::cout << getTitle() << " destroyed successfully." << endl;
+    }
 
     const unsigned int * getChapters() const {return chapters;}
 
@@ -66,9 +66,6 @@ public:
           << printChapters() <<
           std::endl;
     }
-
-
-
 
 };
 

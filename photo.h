@@ -23,7 +23,9 @@ public:
         width = width_;
     }
 
-    ~Photo(){std::cout << "Object destroyed successfully.";};
+    ~Photo(){
+        std::cout << getTitle() << " destroyed successfully." << endl;
+    }
 
     int getHeight(){return height;}
     int getWidth(){return width;}
@@ -39,8 +41,6 @@ public:
         std::string cmd = "imagej " + getFilename() + " &";
         system(cmd.data());
     }
-
-
 
 };
 

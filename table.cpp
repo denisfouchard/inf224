@@ -1,47 +1,44 @@
-#include "multimedia.h"
 #include "table.h"
-#include "photo.h"
-#include "video.h"
-#include "film.h"
-#include "group.h"
-
 
 Table::Table(){
     name = "newtable";
-    std::map<std::string, Multimedia*> mediaMap;
+    std::map<std::string, SmartPtr> mediaMap;
     std::map<std::string, Group*> groupMap;
 }
 
 Table::Table(std::string name_){
     name = name_;
-    std::map<std::string, Multimedia*> mediaMap;
+    std::map<std::string, SmartPtr*> mediaMap;
     std::map<std::string, Group*> groupMap;
 }
 
-Photo* Table::createPhoto(
+SmartPtr Table::createPhoto(
     std::string title_, 
     std::string filename_, 
     unsigned int height_, 
     unsigned int width_)
-    {
+{
     Photo* p = new Photo(title_, filename_, height_, width_);
-    mediaMap[title_] = p;
-    return p;
+    SmartPtr photo(p);
+    mediaMap[title_] = photo;
+    return photo;
 }
 
-Video* Table::createVideo(std::string title_, std::string filename_, unsigned int duration_){
+SmartPtr Table::createVideo(std::string title_, std::string filename_, unsigned int duration_){
     Video* v = new Video(title_, filename_, duration_);
-    mediaMap[title_] = v;
-    return v;
+    SmartPtr video(v);
+    mediaMap[title_] = video;
+    return video;
 }
 
-Film* Table::createFilm(std::string title_,
+SmartPtr Table::createFilm(std::string title_,
                         std::string filename_,
                         unsigned int duration_,
                         unsigned int * chapters_,
                         unsigned int chaptersCount_){
     Film* f = new Film(title_, filename_, duration_, chapters_, chaptersCount_);
-    return f;
+    SmartPtr film(f);
+    return film;
 }
 
 Group* Table::createGroup(std::string groupname_){
@@ -51,53 +48,56 @@ Group* Table::createGroup(std::string groupname_){
 }
 
 void Table::showMedia(std::string title_){
-    try {
-        Multimedia * m = mediaMap[title_];
-        m->showObject(std::cout);
+    auto it = mediaMap.find(title_);
+    if (it==mediaMap.end()){
+        std::cout << "Error : "<< title_ << " not found." << endl;
+    } else {
+        it->second->showObject(std::cout);
     }
-    catch (invalid_argument& e){
-        std::cout << "Error : file not found." << endl;
-    }
+
 }
 
 void Table::showGroup(std::string groupname_){
-    try {
-        Group* g = groupMap[groupname_];
-        g->showGroup(std::cout);
-    }
-    catch (invalid_argument& e){
-        std::cout << "Error : group not found." << endl;
+    auto it = groupMap.find(groupname_);
+    if (it==groupMap.end()){
+        std::cout << "Error : "<< groupname_ << " not found." << endl;
+    } else {
+        it->second->showGroup(std::cout);
     }
 }
 
 void Table::deleteMedia(std::string title_){
-    try {
+    auto it = mediaMap.find(title_);
+    if (it==mediaMap.end()){
+        std::cout << "Error : "<< title_ << " not found." << endl;
+    } else {
         mediaMap.erase(title_);
-        std::cout << title_ << " deleted sucessfully." << endl;
-    }
-    catch (invalid_argument& e){
-        std::cout << "Error : file not found." << endl;
+        std::map<std::string, Group*>::iterator groupIt;
+        for (groupIt = groupMap.begin(); groupIt != groupMap.end(); groupIt++)
+        {
+            Group * g = groupIt->second;
+            g->remove(it->second);
+        }
+        std::cout << title_ << " deleted successfully." << endl;
     }
 }
 
 void Table::deleteGroup(std::string groupname_){
-    try {
+    auto it = groupMap.find(groupname_);
+    if (it==groupMap.end()){
+        std::cout << "Error : "<< groupname_ << " not found." << endl;
+    } else {
         groupMap.erase(groupname_);
-        std::cout << groupname_ << " deleted sucessfully." << endl;
-    }
-    catch (invalid_argument& e){
-        std::cout << "Error : group not found." << endl;
+        std::cout << groupname_ << " deleted successfully." << endl;
     }
 }
 
 void Table::play(std::string title_){
     try {
-        Multimedia * m = mediaMap[title_];
+        SmartPtr m = mediaMap[title_];
         m->play();
     }
     catch (invalid_argument& e){
         std::cout << "Error : file not found." << endl;
     }
 }
-
-// TODO: refaire avec des itérateurs et des find

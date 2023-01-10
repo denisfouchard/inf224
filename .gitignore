@@ -1,0 +1,7 @@
+Makefile
+.vscode
+main.dSYM
+TP1.*
+*.o
+.DStore
+depend-TP1

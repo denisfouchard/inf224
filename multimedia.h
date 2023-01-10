@@ -4,6 +4,8 @@
 #include <string>
 #include <ostream>
 
+using namespace std;
+
 class Multimedia
 {
 
