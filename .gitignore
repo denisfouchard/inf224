@@ -1,7 +1,10 @@
-Makefile
-.vscode
-main.dSYM
-TP1.*
+Makefile*
+.vscode/
+*.dSYM
+MediaServer.*
 *.o
 .DStore
-depend-TP1
+depend-*
+
+.idea
+

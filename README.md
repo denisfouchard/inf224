@@ -9,3 +9,8 @@ Pour les classes qui ne nécessitent pas beaucoup de code j'ai préféré implé
 
 ## Tables
 J'ai choisi de donner directement comme argument aux méthodes showObjects des objets la console **std::cout** au lieu de laisser le choix à l'utilisateur de la méthode showObjects de la classe Table.
+
+## Commandes client
+Nous implémentons les fonctions client suivantes :
+- Rechercher et afficher un média : show [media]
+- Jouer un média : play [media]

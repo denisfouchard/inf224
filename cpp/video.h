@@ -1,7 +1,8 @@
-#ifndef EXAMPLE_H
-#define EXAMPLE_H
+#ifndef VIDEO_H
+#define VIDEO_H
 
 #include <stdlib.h>
+#include <iostream>
 #include "multimedia.h"
 
 class Video : public Multimedia
@@ -18,7 +19,9 @@ public:
         duration = duration_;
     }
 
-    ~Video(){};
+    ~Video(){
+        std::cout << getTitle() << " destroyed successfully." << endl;
+    }
 
     int getDuration() {return duration;};
 
@@ -30,14 +33,15 @@ public:
     }
 
     void play() override {
+        // OS compatibility check
+        #ifdef __APPLE__ || __MACH__
+        std::string cmd = "open " + getFilename() + " &";
+        #elif __linux__
         std::string cmd = "mpv " + getFilename() + " &";
+        #endif    
         system(cmd.data());
     }
 
-
-
 };
-
-
 
 #endif // VIDEO_H

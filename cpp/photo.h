@@ -38,7 +38,12 @@ public:
     }
 
     void play() override {
+        // OS compatibility check
+        #ifdef __APPLE__ || __MACH__
+        std::string cmd = "open -a Preview " + getFilename() + " &";
+        #elif __linux__
         std::string cmd = "imagej " + getFilename() + " &";
+        #endif
         system(cmd.data());
     }
 

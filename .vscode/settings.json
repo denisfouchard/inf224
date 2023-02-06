@@ -65,6 +65,11 @@
         "locale": "cpp",
         "mutex": "cpp",
         "ratio": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "__node_handle": "cpp",
+        "__tree": "cpp",
+        "csignal": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp"
     }
 }

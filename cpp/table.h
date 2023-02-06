@@ -2,6 +2,7 @@
 #define TABLE_H
 
 #include <string>
+#include <sstream>
 #include <map>
 #include "multimedia.h"
 #include "group.h"
@@ -30,13 +31,14 @@ class Table {
 
         virtual Group* createGroup(std::string groupname_);
 
-        virtual void showMedia(std::string title_);
-        virtual void showGroup(std::string groupname_);
+        virtual void showMedia(std::string title_, ostream &client) const;
+        virtual void showGroup(std::string groupname_, ostream &client) const;
 
-        virtual void deleteMedia(std::string title_);
-        virtual void deleteGroup(std::string groupname_);
+        virtual void deleteMedia(std::string title_, ostream &client);
+        virtual void deleteGroup(std::string groupname_, ostream &client);
 
-        virtual void play(std::string title_);
+        virtual void play(std::string title_, ostream &client);
+        virtual void request(std::string command, std::string filename, ostream &client);
 
         ~Table(){};
 

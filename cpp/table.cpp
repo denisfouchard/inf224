@@ -47,29 +47,29 @@ Group* Table::createGroup(std::string groupname_){
     return g;
 }
 
-void Table::showMedia(std::string title_){
+void Table::showMedia(std::string title_, ostream &client) const {
     auto it = mediaMap.find(title_);
     if (it==mediaMap.end()){
-        std::cout << "Error : "<< title_ << " not found." << endl;
+        client << "Error : "<< title_ << " not found." << endl;
     } else {
-        it->second->showObject(std::cout);
+        it->second->showObject(client);
     }
 
 }
 
-void Table::showGroup(std::string groupname_){
+void Table::showGroup(std::string groupname_, ostream &client) const {
     auto it = groupMap.find(groupname_);
     if (it==groupMap.end()){
-        std::cout << "Error : "<< groupname_ << " not found." << endl;
+        client << "Error : "<< groupname_ << " not found." << endl;
     } else {
-        it->second->showGroup(std::cout);
+        it->second->showGroup(client);
     }
 }
 
-void Table::deleteMedia(std::string title_){
+void Table::deleteMedia(std::string title_, ostream &client){
     auto it = mediaMap.find(title_);
     if (it==mediaMap.end()){
-        std::cout << "Error : "<< title_ << " not found." << endl;
+        client << "Error : "<< title_ << " not found." << endl;
     } else {
         mediaMap.erase(title_);
         std::map<std::string, Group*>::iterator groupIt;
@@ -78,26 +78,25 @@ void Table::deleteMedia(std::string title_){
             Group * g = groupIt->second;
             g->remove(it->second);
         }
-        std::cout << title_ << " deleted successfully." << endl;
+        client << title_ << " deleted successfully." << endl;
     }
 }
 
-void Table::deleteGroup(std::string groupname_){
+void Table::deleteGroup(std::string groupname_, ostream &client){
     auto it = groupMap.find(groupname_);
     if (it==groupMap.end()){
-        std::cout << "Error : "<< groupname_ << " not found." << endl;
+        client << "Error : "<< groupname_ << " not found." << endl;
     } else {
         groupMap.erase(groupname_);
-        std::cout << groupname_ << " deleted successfully." << endl;
+        client << groupname_ << " deleted successfully." << endl;
     }
 }
 
-void Table::play(std::string title_){
-    try {
-        SmartPtr m = mediaMap[title_];
-        m->play();
-    }
-    catch (invalid_argument& e){
-        std::cout << "Error : file not found." << endl;
+void Table::play(std::string title_, ostream &client){
+    auto it = mediaMap.find(title_);
+    if (it==mediaMap.end()){
+        client << "Error : "<< title_ << " not found." << endl;
+    } else {
+        it->second->play();
     }
 }
