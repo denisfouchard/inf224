@@ -11,6 +11,7 @@
 #include "film.h"
 
 
+
 class Table {
     private:
         std::string name;
@@ -29,7 +30,7 @@ class Table {
          unsigned int * chapters_,
          unsigned int chaptersCount_);
 
-        virtual Group* createGroup(std::string groupname_);
+        virtual Group* createGroup(std::string groupname_, ostream &client);
 
         virtual void showMedia(std::string title_, ostream &client) const;
         virtual void showGroup(std::string groupname_, ostream &client) const;

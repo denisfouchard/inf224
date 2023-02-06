@@ -41,9 +41,10 @@ SmartPtr Table::createFilm(std::string title_,
     return film;
 }
 
-Group* Table::createGroup(std::string groupname_){
+Group* Table::createGroup(std::string groupname_, ostream &client){
     Group * g = new Group(groupname_);
     groupMap[groupname_] = g;
+    client << "Group : " << groupname_ << "created successfully." << endl;
     return g;
 }
 
@@ -54,7 +55,6 @@ void Table::showMedia(std::string title_, ostream &client) const {
     } else {
         it->second->showObject(client);
     }
-
 }
 
 void Table::showGroup(std::string groupname_, ostream &client) const {

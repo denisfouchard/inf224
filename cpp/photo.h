@@ -39,7 +39,7 @@ public:
 
     void play() override {
         // OS compatibility check
-        #ifdef __APPLE__ || __MACH__
+        #if defined(__APPLE__) || defined(__MACH__)
         std::string cmd = "open -a Preview " + getFilename() + " &";
         #elif __linux__
         std::string cmd = "imagej " + getFilename() + " &";

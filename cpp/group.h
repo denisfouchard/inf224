@@ -21,9 +21,7 @@ class Group : public std::list<SmartPtr>{
     Group(std::string groupname_) : std::list<SmartPtr>(){
         name = groupname_;
     }
-
     ~Group(){};
-
 
     std::string getGroupName(){return name;};
 
@@ -31,7 +29,6 @@ class Group : public std::list<SmartPtr>{
         for (std::list<SmartPtr>::iterator m = this->begin(); m != this->end(); m++){
             m->get()->showObject(s);
         }
-
     }
 }
 ;
