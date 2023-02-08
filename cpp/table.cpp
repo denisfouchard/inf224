@@ -1,15 +1,19 @@
 #include "table.h"
 
-Table::Table(){
-    name = "newtable";
-    std::map<std::string, SmartPtr> mediaMap;
-    std::map<std::string, Group*> groupMap;
-}
+
 
 Table::Table(std::string name_){
     name = name_;
-    std::map<std::string, SmartPtr*> mediaMap;
-    std::map<std::string, Group*> groupMap;
+    // Command mapping
+    commandMap.emplace("SHOWMEDIA", [this](std::string objectname, ostream &client){this->showMedia(objectname, client);});
+    commandMap.emplace("SHOWGROUP", [this](std::string objectname, ostream &client){this->showGroup(objectname, client);});
+    commandMap.emplace("CREATEGROUP", [this](std::string objectname, ostream &client){this->createGroup(objectname, client);});
+    commandMap.emplace("DELETEGROUP", [this](std::string objectname, ostream &client){this->deleteGroup(objectname, client);});
+    commandMap.emplace("DELETEMEDIA", [this](std::string objectname, ostream &client){this->deleteMedia(objectname, client);});
+    commandMap.emplace("PLAY", [this](std::string objectname, ostream &client){this->play(objectname, client);});
+}
+
+Table::Table():Table("newtable"){
 }
 
 SmartPtr Table::createPhoto(
@@ -99,4 +103,21 @@ void Table::play(std::string title_, ostream &client){
     } else {
         it->second->play();
     }
+}
+
+bool Table::saveAll(const std::string &filename){
+    std::ofstream f;
+    f.open(filename);
+    if (!f) {
+        cerr << "Can't open file " << filename << endl; return false;
+    }
+    for (auto it = mediaMap.begin(); it != mediaMap.end(); it++) {
+        f << it->second->classname() << '\n'; 
+        it->second->write(f);
+
+    if (f.fail()) {
+        cerr << "Write error in " << filename << endl;
+        return false; }
+    }
+    return true;
 }

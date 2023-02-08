@@ -2,6 +2,8 @@
 #define TABLE_H
 
 #include <string>
+#include <ostream>
+#include <fstream>
 #include <sstream>
 #include <map>
 #include "multimedia.h"
@@ -17,6 +19,7 @@ class Table {
         std::string name;
         std::map<std::string, SmartPtr> mediaMap;
         std::map<std::string, Group*> groupMap;
+        std::map<std::string, std::function<void(std::string, std::ostream &)>> commandMap;
     
     public:
         Table();
@@ -40,6 +43,8 @@ class Table {
 
         virtual void play(std::string title_, ostream &client);
         virtual void request(std::string command, std::string filename, ostream &client);
+
+        virtual bool saveAll(const std::string &filname);
 
         ~Table(){};
 

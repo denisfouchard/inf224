@@ -1,5 +1,4 @@
 #include "multimedia.h"
-#include <iostream>
 
 
 Multimedia::Multimedia()
@@ -22,3 +21,14 @@ void Multimedia::showObject(std::ostream & s)
 }
 
 void Multimedia::play(){}
+
+void Multimedia::write(std::ostream &f){
+    f << filename << '\n' << title << '\n';
+}
+
+void Multimedia::read(std::istream &f){
+    getline(f, filename);
+    getline(f, title);
+}
+
+

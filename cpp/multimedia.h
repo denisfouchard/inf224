@@ -3,12 +3,14 @@
 
 #include <string>
 #include <ostream>
+#include <iostream>
+#include <istream>
+#include <stdlib.h>
 
 using namespace std;
 
 class Multimedia
 {
-
 private:
     std::string title;
     std::string filename;
@@ -23,11 +25,13 @@ public:
 
     std::string getTitle(){return title;};
     std::string getFilename(){return filename;};
+    virtual std::string classname() const = 0;
 
     virtual void showObject(std::ostream & s);
     virtual void play();
 
-
+    virtual void write(std::ostream &f);
+    virtual void read(std::istream &f);
 };
 
 #endif // MULTIMEDIA_H

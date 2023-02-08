@@ -6,7 +6,7 @@
 #include "group.h"
 #include "table.h"
 
-// #define VERSION_TEST
+#define VERSION_TEST
 
 using namespace std;
 
@@ -26,9 +26,9 @@ int main(int argc, const char* argv[])
     mediaTable->deleteMedia("Levitating", std::cout);
     mediaTable->showMedia("mec", std::cout);
     mediaTable->deleteMedia("Non", std::cout);
-    #endif
+    mediaTable->saveAll("../mediatable");  
 
- 
+    #else
 
     auto* server =
         new TCPServer([&mediaTable](std::string const& request, std::string& response) {
@@ -68,5 +68,7 @@ int main(int argc, const char* argv[])
         return 1;
     }
     
+    #endif
+
     return 0;
 }

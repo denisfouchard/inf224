@@ -1,8 +1,6 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
-#include <stdlib.h>
-#include <iostream>
 #include "multimedia.h"
 
 class Video : public Multimedia
@@ -25,6 +23,8 @@ public:
 
     int getDuration() {return duration;};
 
+    std::string classname() const override {return "video";}
+
     void showObject(std::ostream & s) override {
         s << getFilename()<< '\n'
           << getTitle() << '\n'
@@ -40,6 +40,19 @@ public:
         std::string cmd = "mpv " + getFilename() + " &";
         #endif    
         system(cmd.data());
+    }
+
+    virtual void write(std::ostream &f) override {
+        Multimedia::write(f);
+        f << duration<< '\n';
+    }
+
+    virtual void read(std::istream &f) override {
+        Multimedia::read(f);
+        std::string d;
+        getline(f, d);
+        duration = stoi(d);
+
     }
 
 };
