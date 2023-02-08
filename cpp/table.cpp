@@ -52,6 +52,19 @@ Group* Table::createGroup(std::string groupname_, ostream &client){
     return g;
 }
 
+SmartPtr Table::createFromClassName(std::string classname){
+    if (classname == "photo"){
+        return createPhoto("", "", 0, 0);
+    } else if (classname == "video"){
+        return createVideo("", "", 0);
+    } else if (classname == "film"){
+        return createFilm("", "", 0, NULL, 0);
+    } else {
+        std::cerr << "Error : unrecognized class name " << classname << endl;
+        return NULL;
+    }
+}
+
 void Table::showMedia(std::string title_, ostream &client) const {
     auto it = mediaMap.find(title_);
     if (it==mediaMap.end()){
@@ -119,5 +132,31 @@ bool Table::saveAll(const std::string &filename){
         cerr << "Write error in " << filename << endl;
         return false; }
     }
+    f.close();
+    return true;
+}
+
+bool Table::readAll(const std::string &filename){
+    std::ifstream f;
+    f.open(filename);
+    if (!f) {
+        cerr << "Can't open file " << filename << endl;
+        return false;
+    }
+    while (f) { 
+        std::string classname;
+        getline(f, classname);
+        if (classname.length() ==0){
+            return true;
+        }
+        SmartPtr m_ptr = createFromClassName(classname);
+        m_ptr->read(f);
+        m_ptr->showObject(std::cout); 
+        if (f.fail()) {
+            cerr << "Read error in " << filename << endl; 
+            return false;
+        }
+    }
+    f.close();
     return true;
 }

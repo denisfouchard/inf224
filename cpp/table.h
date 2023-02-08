@@ -33,6 +33,7 @@ class Table {
          unsigned int * chapters_,
          unsigned int chaptersCount_);
 
+        virtual SmartPtr createFromClassName(std::string classname);
         virtual Group* createGroup(std::string groupname_, ostream &client);
 
         virtual void showMedia(std::string title_, ostream &client) const;
@@ -45,6 +46,7 @@ class Table {
         virtual void request(std::string command, std::string filename, ostream &client);
 
         virtual bool saveAll(const std::string &filname);
+        virtual bool readAll(const std::string &filename);
 
         ~Table(){};
 
