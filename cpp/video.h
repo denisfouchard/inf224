@@ -28,7 +28,7 @@ public:
     void showObject(std::ostream & s) override {
         s << getFilename()<< '\n'
           << getTitle() << '\n'
-          << getDuration() <<
+          << getDuration() << '\n' <<
           std::endl;
     }
 

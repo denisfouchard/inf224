@@ -6,7 +6,7 @@
 #include "group.h"
 #include "table.h"
 
-#define VERSION_TEST
+// #define VERSION_TEST
 
 using namespace std;
 
@@ -18,7 +18,7 @@ int main(int argc, const char* argv[])
     Table * mediaTable = new Table();
     Group *group = mediaTable->createGroup("Mes médias", std::cout);
     SmartPtr v = mediaTable->createVideo("Levitating", "levitating.mp3", 150);
-    // SmartPtr image = mediaTable->createPhoto("logo-bedia", "/Users/df/Pictures/logo-bedia.png", 100, 100);
+    SmartPtr image = mediaTable->createPhoto("logo-bedia", "/Users/df/Pictures/logo-bedia.png", 100, 100);
     group->push_back(v);
 
     #ifdef VERSION_TEST
