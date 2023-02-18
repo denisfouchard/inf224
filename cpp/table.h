@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <functional>
+
 #include "multimedia.h"
 #include "group.h"
 #include "photo.h"
