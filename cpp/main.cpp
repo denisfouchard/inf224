@@ -8,7 +8,6 @@
 
 // #define VERSION_TEST
 
-using namespace std;
 
 const int PORT = 3331;
 
