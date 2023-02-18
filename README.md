@@ -2,11 +2,6 @@
 Auteur : Denis Fouchard
 
 
-## TODO
-- [x] Répondre aux questions
-- [x] Faire un Makefile pour la partie Swing
-- [ ] Vérifier que le code compile sur les machines de l'école
-
 ## Build, run
 Se placer dans le dossier racine du projet.
 
