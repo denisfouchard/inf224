@@ -1,5 +1,6 @@
 #include <memory>
 #include <string>
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include "tcpserver.h"
