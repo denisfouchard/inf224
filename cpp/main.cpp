@@ -16,17 +16,18 @@ int main(int argc, const char* argv[])
 {
     
     Table * mediaTable = new Table();
-    Group *group = mediaTable->createGroup("Mes médias", std::cout);
+    Group *group = mediaTable->createGroup("group1", std::cout);
     SmartPtr v = mediaTable->createVideo("Levitating", "levitating.mp3", 150);
     SmartPtr image = mediaTable->createPhoto("logo-bedia", "/Users/df/Pictures/logo-bedia.png", 100, 100);
     group->push_back(v);
+    group->push_back(image);
 
     #ifdef VERSION_TEST
     mediaTable->showMedia("Levitating", std::cout);
-    mediaTable->deleteMedia("Levitating", std::cout);
+    //mediaTable->deleteMedia("Levitating", std::cout);
     mediaTable->showMedia("mec", std::cout);
     mediaTable->deleteMedia("Non", std::cout);
-    mediaTable->readAll("../mediatable");
+    // mediaTable->readAll("../mediatable");
     mediaTable->saveAll("../mediatable_test");  
 
     #else

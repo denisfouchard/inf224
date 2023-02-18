@@ -26,17 +26,16 @@ public:
     std::string classname() const override {return "video";}
 
     void showObject(std::ostream & s) override {
-        s << getFilename()<< '\n'
-          << getTitle() << '\n'
-          << getDuration() << '\n' <<
-          std::endl;
+        Multimedia::showObject(s);
+        s << getDuration() << '\n';
     }
 
     void play() override {
         // OS compatibility check
         #if defined(__APPLE__) || defined(__MACH__)
         std::string cmd = "open " + getFilename() + " &";
-        #elif __linux__
+        #endif
+        #if defined(__linux__)
         std::string cmd = "mpv " + getFilename() + " &";
         #endif    
         system(cmd.data());

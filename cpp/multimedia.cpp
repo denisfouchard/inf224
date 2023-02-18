@@ -15,9 +15,9 @@ Multimedia::Multimedia(std::string title_, std::string filename_)
 
 void Multimedia::showObject(std::ostream & s)
 {
-    s << getFilename()<< '\n'
-      << getTitle() <<
-      std::endl;
+    s << classname() << '\n' <<
+        getTitle() << '\n' <<
+        getFilename() << '\n' << std::endl;
 }
 
 void Multimedia::play(){}

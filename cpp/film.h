@@ -37,7 +37,7 @@ public:
     void writeChapters(std::ostream &f);
     void readChapters(std::istream &f);
 
-    void showObject(std::ostream & s) override;
+    void showObject(std::ostream &s) override;
 
     virtual void write(std::ostream &f) override;
     virtual void read(std::istream &f) override;

@@ -7,6 +7,7 @@
 #include <memory>
 #include "multimedia.h"
 
+// On crée une définition de type pour éviter d'écrire std::shared_ptr<Multimedia> à chaque fois
 using SmartPtr = std::shared_ptr<Multimedia>;
 
 class Group : public std::list<SmartPtr>{
@@ -28,6 +29,12 @@ class Group : public std::list<SmartPtr>{
     void showGroup(std::ostream & s){
         for (std::list<SmartPtr>::iterator m = this->begin(); m != this->end(); m++){
             m->get()->showObject(s);
+        }
+    }
+
+    void listGroup(std::ostream & s){
+        for (std::list<SmartPtr>::iterator m = this->begin(); m != this->end(); m++){
+            s << m->get()->getTitle() << std::endl;
         }
     }
 }

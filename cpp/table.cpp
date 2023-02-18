@@ -7,6 +7,7 @@ Table::Table(std::string name_){
     // Command mapping
     commandMap.emplace("SHOWMEDIA", [this](std::string objectname, ostream &client){this->showMedia(objectname, client);});
     commandMap.emplace("SHOWGROUP", [this](std::string objectname, ostream &client){this->showGroup(objectname, client);});
+    commandMap.emplace("LISTGROUP", [this](std::string objectname, ostream &client){this->listGroup(objectname, client);});
     commandMap.emplace("CREATEGROUP", [this](std::string objectname, ostream &client){this->createGroup(objectname, client);});
     commandMap.emplace("DELETEGROUP", [this](std::string objectname, ostream &client){this->deleteGroup(objectname, client);});
     commandMap.emplace("DELETEMEDIA", [this](std::string objectname, ostream &client){this->deleteMedia(objectname, client);});
@@ -80,6 +81,15 @@ void Table::showGroup(std::string groupname_, ostream &client) const {
         client << "Error : "<< groupname_ << " not found." << endl;
     } else {
         it->second->showGroup(client);
+    }
+}
+
+void Table::listGroup(std::string groupname_, ostream &client) const {
+    auto it = groupMap.find(groupname_);
+    if (it==groupMap.end()){
+        client << "Error : "<< groupname_ << " not found." << endl;
+    } else {
+        it->second->listGroup(client);
     }
 }
 

@@ -28,7 +28,7 @@ public:
     virtual std::string classname() const = 0;
 
     virtual void showObject(std::ostream & s);
-    virtual void play();
+    virtual void play() = 0;
 
     virtual void write(std::ostream &f);
     virtual void read(std::istream &f);

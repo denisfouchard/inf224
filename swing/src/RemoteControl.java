@@ -1,17 +1,20 @@
+package src;
+
+import src.Client;
+import src.MediaSelectionPanel;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class RemoteControl extends JFrame {
-    /**
+    /**s
      * Creates the main window for the application
      */
     private static final long serialVersionUID = 1L;
     private JPanel windowsPanel = new JPanel();
     private JLabel statusLabel = new JLabel();
     private JTextArea textArea;
-    private JButton button1, button2, button3;
+    private JButton playButton, editButton, deleteButton;
     private JMenu fileMenu, editMenu;
     private JMenuBar menuBar = new JMenuBar();
     private JToolBar toolBar = new JToolBar();
@@ -31,26 +34,25 @@ public class RemoteControl extends JFrame {
 
         // Server connection
         connect();
-        MediaSelectionPanel selectionPanel = new MediaSelectionPanel(client);
+        MediaSelectionPanel selectionPanel = new MediaSelectionPanel(client, this);
 
         // Layout elements
         JPanel buttonPanel = new JPanel();
 
-
         // Buttons
-        button1 = new JButton("Play");
-        button2 = new JButton("Edit");
-        button3 = new JButton("Delete");
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        buttonPanel.add(button3);
+        playButton = new JButton("Play");
+        editButton = new JButton("Edit");
+        deleteButton = new JButton("Delete");
+        // disable buttons
+        playButton.setEnabled(false);
+        editButton.setEnabled(false);
+        deleteButton.setEnabled(false);
 
-        // Listeners
-        button1.addActionListener( (ActionEvent event) -> textArea.setText("Play") );
-        button2.addActionListener( (ActionEvent event) -> textArea.setText("Edit") );
-        button3.addActionListener( (ActionEvent event) -> textArea.setText("Delete") );
+        // add buttons to panel
+        buttonPanel.add(playButton);
+        buttonPanel.add(editButton);
+        buttonPanel.add(deleteButton);
 
-        // Menu Bar
 
         // FileMenu
         fileMenu = new JMenu("File");
@@ -90,7 +92,6 @@ public class RemoteControl extends JFrame {
         editMenu.add(addGroup);
         editMenu.add(deleteGroup);
 
-
         // Menu bar
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
@@ -111,12 +112,6 @@ public class RemoteControl extends JFrame {
         statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
-
-
-
-
-
-
 
         // Add selection panel
 
@@ -155,7 +150,15 @@ public class RemoteControl extends JFrame {
 
     }
 
-
-
-
+    public void setCommandButtons(String selectedMedia) {
+        if (selectedMedia == null) {
+            playButton.setEnabled(false);
+            editButton.setEnabled(false);
+            deleteButton.setEnabled(false);
+        } else {
+            playButton.setEnabled(true);
+            editButton.setEnabled(true);
+            deleteButton.setEnabled(true);
+        }
+    }
 }

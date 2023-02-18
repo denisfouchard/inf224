@@ -1,6 +1,5 @@
 #include "film.h"
 
-
 Film::Film():Video(){
     chapters  = nullptr;
     chaptersCount = 0;
@@ -49,11 +48,8 @@ void::Film::readChapters(std::istream &f){
 }
 
 void Film::showObject(std::ostream &s){
-    s << getFilename()<< '\n'
-        << getTitle() << '\n'
-        << getDuration() << '\n'
-        << printChapters() <<
-        std::endl;
+    Video::showObject(s);
+    s << printChapters() << '\n' << std::endl;
 };
 
 void Film::write(std::ostream &f){
