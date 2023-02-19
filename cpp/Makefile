@@ -65,7 +65,10 @@ run-cliserv: ${SERVER} ${CLIENT}
 	./${SERVER} & 
 	wait 
 	./${CLIENT} && fg
-	
+
+server: ${SERVER}
+
+client: ${CLIENT}
 
 ${CLIENT}: depend-${CLIENT} ${CLIENT_OBJETS}
 	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${CLIENT_OBJETS} ${LDLIBS}

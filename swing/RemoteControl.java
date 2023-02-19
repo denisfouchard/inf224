@@ -14,7 +14,7 @@ public class RemoteControl extends JFrame {
     private JTextArea textArea;
     private JButton playButton;
     private JButton deleteButton;
-    private JMenu fileMenu, editMenu;
+    private JMenu fileMenu;
     private JMenuBar menuBar = new JMenuBar();
     private JToolBar toolBar = new JToolBar();
     private int CONNECTION_STATUS = 0;
@@ -70,18 +70,13 @@ public class RemoteControl extends JFrame {
         fileMenu = new JMenu("File");
 
 
-        // Edit Menu
-        editMenu = new JMenu("Edit");
-        AbstractAction addMedia = new AbstractAction("Add media") {
+        AbstractAction deleteMedia = new AbstractAction("Remove media") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Add media");
-            }
-        };
-        AbstractAction removeMedia = new AbstractAction("Remove media") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Remove media");
+                String res = client.send("DELETEMEDIA " + getSelectedMedia());
+                // create a dialog box to show the result with ok button
+                selectionPanel.updateMediaList();
+                JOptionPane.showMessageDialog(null, res, "Delete media", JOptionPane.INFORMATION_MESSAGE);
             }
         };
 
@@ -98,15 +93,13 @@ public class RemoteControl extends JFrame {
                 selectionPanel.deleteGroup();
             }
         };
-        editMenu.add(addMedia);
-        editMenu.add(removeMedia);
-        editMenu.addSeparator();
-        editMenu.add(addGroup);
-        editMenu.add(deleteGroup);
+        fileMenu.add(deleteMedia);
+        fileMenu.addSeparator();
+        fileMenu.add(addGroup);
+        fileMenu.add(deleteGroup);
 
         // Menu bar
         menuBar.add(fileMenu);
-        menuBar.add(editMenu);
         menuBar.add(toolBar);
 
         // Panel layout

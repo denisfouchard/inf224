@@ -10,6 +10,7 @@ Se placer dans le dossier racine du projet.
 cd cpp
 make run
 ```
+
 **Pour compiler et lancer le serveur et le client C++ en même temps**
 ```
 cd cpp
@@ -19,6 +20,12 @@ make run-cliserv
 ```
 cd swing
 make run
+```
+**Pour compiler le client et le serveur C++ séparément**
+````
+cd cpp
+make server
+make client
 ```
 *Après on pourra lancer séparement le client et le serveur C++ avec les commandes*
 ```
