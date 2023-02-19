@@ -7,6 +7,8 @@
 #include "group.h"
 #include "table.h"
 
+// Décommenter pour tester la version console
+
 //#define VERSION_TEST
 
 
@@ -16,21 +18,19 @@ int main(int argc, const char* argv[])
 {
     
     Table * mediaTable = new Table();
-    Group *group = mediaTable->createGroup("New_group", std::cout);
-    SmartPtr v = mediaTable->createVideo("StarWars", "starwars.mp4", 150);
-    SmartPtr image = mediaTable->createPhoto("cat", "cat.png", 100, 100);
+    Group *group = mediaTable->createGroup("MediaGroup", std::cout);
+    SmartPtr v = mediaTable->createVideo("Thor", "bibliotheque/thor.mp4", 7);
+    SmartPtr image = mediaTable->createPhoto("cat", "bibliotheque/cat.jpg", 422, 422);
     group->push_back(v);
     group->push_back(image);
 
     #ifdef VERSION_TEST
-    mediaTable->showMedia("Levitating", std::cout);
-    //mediaTable->deleteMedia("Levitating", std::cout);
-    mediaTable->showMedia("mec", std::cout);
-    mediaTable->deleteMedia("Non", std::cout);
+    mediaTable->showMedia("fakemedia1", std::cout);
+    mediaTable->deleteMedia("fakemedia2", std::cout);
     group->remove(image);
     mediaTable->deleteMedia("cat", std::cout);
-    // mediaTable->readAll("../mediatable");
-    mediaTable->saveAll("../mediatable_test");  
+    mediaTable->readAll("mediatable");
+    mediaTable->saveAll("mediatable");  
 
     #else
 
