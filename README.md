@@ -33,9 +33,10 @@ Pour les classes qui ne nécessitent pas beaucoup de code j'ai préféré implé
 
 ## Commandes client
 Liste des commandes pour la console client C++.
+>- Afficher la liste de tous les groupes : SHOWALLGROUPS
 >- Rechercher et afficher un média : SHOWMEDIA [media]
 >- Rechercher et afficher un groupe : SHOWGROUP [group]
->- Afficher la liste des médias d'un group : LISTGROUP [group]
+>- Afficher la liste des médias d'un groupe : LISTGROUP [group]
 >- Créer un groupe : CREATEGROUP [group]
 >- Supprimer un groupe : DELETEGROUP [group]
 >- Supprimer un média : DELETEMEDIA [media]

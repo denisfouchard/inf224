@@ -1,4 +1,4 @@
-package src;
+package swing;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -31,13 +31,30 @@ public class MediaSelectionPanel extends JPanel {
         mediaListSelection.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         groupListSelection.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        groupModel.addElement("group1");
-        mediaModel.addElement("Test media");
+        // Select first group by default if it exists
+        if (groupListSelection.getModel().getSize() > 0){
+            groupListSelection.setSelectedIndex(1);
+            selectedGroup = groupListSelection.getSelectedValue();
+        }
 
-        mediaScrollPane = new JScrollPane(mediaListSelection);
-        groupScrollPane = new JScrollPane(groupListSelection);
+        // Send request to server for group list and show all of its medias
+        updateGroupList();
+        updateMediaList();
+
+
+        mediaScrollPane = new JScrollPane(mediaListSelection, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        groupScrollPane = new JScrollPane(groupListSelection, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         mediaScrollPane.setPreferredSize(new Dimension(200, 200));
         groupScrollPane.setPreferredSize(new Dimension(200, 200));
+
+        // Add buttons to groupScrollPane
+        JButton addGroupButton = new JButton("Add group");
+
+        addGroupButton.addActionListener(e -> {
+            createGroup();
+        });
+
+        groupScrollPane.add(addGroupButton);
 
         // Make groupScrollPane and mediaScrollPane resizable with a custom divider
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, groupScrollPane, mediaScrollPane);
@@ -52,13 +69,8 @@ public class MediaSelectionPanel extends JPanel {
             public void valueChanged(ListSelectionEvent e) {
                 if (groupListSelection.getSelectedValue() != null) {
                     selectedGroup = groupListSelection.getSelectedValue();
-                    String res = client.send("LISTGROUP " + selectedGroup);
-                    // parse res to get medias with ; as separator
-                    String[] medias = res.split(";");
-                    mediaModel.clear();
-                    for (String media : medias) {
-                        mediaModel.addElement(media);
-                    }
+                    remoteControl.setSelectedGroup(selectedGroup);
+                    updateMediaList();
                 }
             }
         });
@@ -68,6 +80,7 @@ public class MediaSelectionPanel extends JPanel {
             public void valueChanged(ListSelectionEvent e) {
                 if (mediaListSelection.getSelectedValue() != null) {
                     selectedMedia = mediaListSelection.getSelectedValue();
+                    remoteControl.setSelectedMedia(selectedMedia);
                     String res = client.send("SHOWMEDIA " + selectedMedia);
                     // parse res to get medias with ; as separator
                     String[] mediaAttributes = res.split(";");
@@ -90,15 +103,24 @@ public class MediaSelectionPanel extends JPanel {
         groupModel.remove(groupListSelection.getSelectedIndex());
     }
 
-    public void createMedia(){
-        /**
-         * Creates a media with a name given by the user
-         */
-        String groupName = JOptionPane.showInputDialog(this, "Group's name : ");
-        String res = client.send("CREATEGROUP " + groupName);
-        groupModel.addElement(groupName);
+    public void updateGroupList() {
+        String res = client.send("SHOWALLGROUPS");
+        // parse res to get medias with ; as separator
+        String[] groups = res.split(";");
+        groupModel.clear();
+        for (String group : groups) {
+            groupModel.addElement(group);
+        }
     }
 
+    public void updateMediaList() {
+        String res = client.send("LISTGROUP " + selectedGroup);
+        // parse res to get medias with ; as separator
+        String[] medias = res.split(";");
+        mediaModel.clear();
+        for (String media : medias) {
+            mediaModel.addElement(media);
+        }
 
-
+    }
 }

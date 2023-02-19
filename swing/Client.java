@@ -1,4 +1,4 @@
-package src;//
+package swing;//
 // Client Java pour communiquer avec le Serveur C++
 // eric lecolinet - telecom paristech - 2015
 //

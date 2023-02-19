@@ -16,9 +16,9 @@ int main(int argc, const char* argv[])
 {
     
     Table * mediaTable = new Table();
-    Group *group = mediaTable->createGroup("group1", std::cout);
-    SmartPtr v = mediaTable->createVideo("Levitating", "levitating.mp3", 150);
-    SmartPtr image = mediaTable->createPhoto("logo-bedia", "/Users/df/Pictures/logo-bedia.png", 100, 100);
+    Group *group = mediaTable->createGroup("New_group", std::cout);
+    SmartPtr v = mediaTable->createVideo("Star Wars", "starwars.mp4", 150);
+    SmartPtr image = mediaTable->createPhoto("cat", "cat.png", 100, 100);
     group->push_back(v);
     group->push_back(image);
 

@@ -9,15 +9,13 @@
 #
 # Nom du programme (doit correspondre au fichier qui contient main())
 #
-PROG = src.Main
+PROG = Main
 
 #
 # Fichiers sources .java
 #
 
-#Les fichiers sources sont dans le dossier src/ pour plus de clarté
-
-SOURCES = $(shell find src -name "*.java")
+SOURCES = $(wildcard *.java)
 
 #
 # Compilateur Java

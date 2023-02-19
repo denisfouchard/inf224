@@ -1,4 +1,4 @@
-package src;
+package swing;
 
 public class Main {
 

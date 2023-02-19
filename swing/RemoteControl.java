@@ -1,7 +1,5 @@
-package src;
+package swing;
 
-import src.Client;
-import src.MediaSelectionPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +9,7 @@ public class RemoteControl extends JFrame {
      * Creates the main window for the application
      */
     private static final long serialVersionUID = 1L;
+    private String selectedGroup, selectedMedia;
     private JPanel windowsPanel = new JPanel();
     private JLabel statusLabel = new JLabel();
     private JTextArea textArea;
@@ -52,6 +51,21 @@ public class RemoteControl extends JFrame {
         buttonPanel.add(playButton);
         buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
+
+        // setup listeners
+        playButton.addActionListener(e -> {
+            client.send("PLAY " + getSelectedMedia());
+        });
+        editButton.addActionListener(e -> {
+            client.send("EDITMEDIA " + getSelectedMedia());
+        });
+        deleteButton.addActionListener(e -> {
+            String res = client.send("DELETEMEDIA " + getSelectedMedia());
+            // create a dialog box to show the result with ok button
+            selectionPanel.updateMediaList();
+            JOptionPane.showMessageDialog(null, res, "Delete media", JOptionPane.INFORMATION_MESSAGE);
+
+        });
 
 
         // FileMenu
@@ -161,4 +175,25 @@ public class RemoteControl extends JFrame {
             deleteButton.setEnabled(true);
         }
     }
+
+
+    public void setSelectedGroup(String selectedGroup) {
+        this.selectedGroup = selectedGroup;
+    }
+
+    public String getSelectedGroup() {
+        return this.selectedGroup;
+    }
+
+
+    public void setSelectedMedia(String selectedMedia) {
+        this.selectedMedia = selectedMedia;
+        // Enable buttons
+        this.setCommandButtons(selectedMedia);
+    }
+
+    public String getSelectedMedia() {
+        return this.selectedMedia;
+    }
+
 }

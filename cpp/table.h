@@ -41,6 +41,7 @@ class Table {
         virtual void showMedia(std::string title_, ostream &client) const;
         virtual void showGroup(std::string groupname_, ostream &client) const;
         virtual void listGroup(std::string groupname_, ostream &client) const;
+        virtual void showAllGroups(ostream &client) const;
 
         virtual void deleteMedia(std::string title_, ostream &client);
         virtual void deleteGroup(std::string groupname_, ostream &client);
