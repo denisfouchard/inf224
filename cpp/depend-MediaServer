@@ -1,9 +1,0 @@
-main.o: main.cpp tcpserver.h ccsocket.h group.h multimedia.h table.h \
-  photo.h video.h film.h
-tcpserver.o: tcpserver.cpp tcpserver.h ccsocket.h
-ccsocket.o: ccsocket.cpp ccsocket.h
-multimedia.o: multimedia.cpp multimedia.h
-film.o: film.cpp film.h video.h multimedia.h
-table.o: table.cpp table.h multimedia.h group.h photo.h video.h film.h
-request.o: request.cpp table.h multimedia.h group.h photo.h video.h \
-  film.h
