@@ -34,6 +34,7 @@ public class MediaSelectionPanel extends JPanel {
         mediaListSelection.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         groupListSelection.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
+        updateGroupList();
         // Select first group by default if it exists
         if (groupListSelection.getModel().getSize() > 0){
             groupListSelection.setSelectedValue(groupListSelection.getModel().getElementAt(0), true);
@@ -41,7 +42,7 @@ public class MediaSelectionPanel extends JPanel {
         }
 
         // Send request to server for group list and show all of its medias
-        updateGroupList();
+
         updateMediaList();
 
 

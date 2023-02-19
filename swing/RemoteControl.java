@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+
 public class RemoteControl extends JFrame {
     /**s
      * Creates the main window for the application
@@ -11,7 +12,8 @@ public class RemoteControl extends JFrame {
     private JPanel windowsPanel = new JPanel();
     private JLabel statusLabel = new JLabel();
     private JTextArea textArea;
-    private JButton playButton, editButton, deleteButton;
+    private JButton playButton;
+    private JButton deleteButton;
     private JMenu fileMenu, editMenu;
     private JMenuBar menuBar = new JMenuBar();
     private JToolBar toolBar = new JToolBar();
@@ -41,25 +43,20 @@ public class RemoteControl extends JFrame {
 
         // Buttons
         playButton = new JButton("Play");
-        editButton = new JButton("Edit");
         deleteButton = new JButton("Delete");
         // disable buttons
         playButton.setEnabled(false);
-        editButton.setEnabled(false);
         deleteButton.setEnabled(false);
 
         // add buttons to panel
         buttonPanel.add(playButton);
-        buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
 
         // setup listeners
         playButton.addActionListener(e -> {
             client.send("PLAY " + getSelectedMedia());
         });
-        editButton.addActionListener(e -> {
-            client.send("EDITMEDIA " + getSelectedMedia());
-        });
+
         deleteButton.addActionListener(e -> {
             String res = client.send("DELETEMEDIA " + getSelectedMedia());
             // create a dialog box to show the result with ok button
@@ -171,11 +168,9 @@ public class RemoteControl extends JFrame {
          */
         if (selectedMedia == null) {
             playButton.setEnabled(false);
-            editButton.setEnabled(false);
             deleteButton.setEnabled(false);
         } else {
             playButton.setEnabled(true);
-            editButton.setEnabled(true);
             deleteButton.setEnabled(true);
         }
     }
