@@ -20,6 +20,11 @@ public class MediaSelectionPanel extends JPanel {
     private DefaultListModel<String> groupModel;
 
     public MediaSelectionPanel(Client client, RemoteControl remoteControl){
+        /**
+         * Creates the panel with the buttons for the control of the media
+         * @param client Client object to send requests to the server
+         *               remoteControl RemoteControl main Remote window
+         */
         super();
         this.client = client;
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -33,7 +38,7 @@ public class MediaSelectionPanel extends JPanel {
 
         // Select first group by default if it exists
         if (groupListSelection.getModel().getSize() > 0){
-            groupListSelection.setSelectedIndex(1);
+            groupListSelection.setSelectedValue(groupListSelection.getModel().getElementAt(0), true);
             selectedGroup = groupListSelection.getSelectedValue();
         }
 
@@ -104,6 +109,9 @@ public class MediaSelectionPanel extends JPanel {
     }
 
     public void updateGroupList() {
+        /**
+         * Updates the group list with the groups from the server
+         */
         String res = client.send("SHOWALLGROUPS");
         // parse res to get medias with ; as separator
         String[] groups = res.split(";");
@@ -114,6 +122,9 @@ public class MediaSelectionPanel extends JPanel {
     }
 
     public void updateMediaList() {
+        /**
+         * Updates the media list with the medias from the server
+         */
         String res = client.send("LISTGROUP " + selectedGroup);
         // parse res to get medias with ; as separator
         String[] medias = res.split(";");

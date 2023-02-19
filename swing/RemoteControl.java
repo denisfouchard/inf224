@@ -23,6 +23,9 @@ public class RemoteControl extends JFrame {
 
 
     public RemoteControl(){
+        /**
+         * Creates the main window for the application
+         */
         super();
         //macOS menu bar
         String os = System.getProperty("os.name").toLowerCase();
@@ -165,6 +168,9 @@ public class RemoteControl extends JFrame {
     }
 
     public void setCommandButtons(String selectedMedia) {
+        /**
+         * Enable or disable buttons based on selected media
+         */
         if (selectedMedia == null) {
             playButton.setEnabled(false);
             editButton.setEnabled(false);

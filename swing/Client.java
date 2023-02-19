@@ -67,14 +67,13 @@ public class Client
     public String getHost() {
         return host;
     }
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ///
-    /// Envoie une requete au server et retourne sa reponse.
-    /// Noter que la methode bloque si le serveur ne repond pas.
-    ///
     public String send(String request) {
-        // Envoyer la requete au serveur
+        /**
+         * Envoie une requete au server et retourne sa reponse.
+         * Noter que la methode bloque si le serveur ne repond pas.
+         * @param request la requete a envoyer au serveur
+         */
         try {
             request += "\n";  // ajouter le separateur de lignes
             output.write(request, 0, request.length());

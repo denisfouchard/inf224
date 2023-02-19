@@ -105,13 +105,14 @@ void Table::deleteMedia(std::string title_, ostream &client){
     if (it==mediaMap.end()){
         client << "Error : "<< title_ << " not found." << endl;
     } else {
-        mediaMap.erase(title_);
+        // Delete from all groups
         std::map<std::string, Group*>::iterator groupIt;
         for (groupIt = groupMap.begin(); groupIt != groupMap.end(); groupIt++)
         {
             Group * g = groupIt->second;
             g->remove(it->second);
         }
+        mediaMap.erase(title_);
         client << title_ << " deleted successfully." << endl;
     }
 }

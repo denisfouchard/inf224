@@ -7,7 +7,7 @@
 #include "group.h"
 #include "table.h"
 
-// #define VERSION_TEST
+//#define VERSION_TEST
 
 
 const int PORT = 3331;
@@ -17,7 +17,7 @@ int main(int argc, const char* argv[])
     
     Table * mediaTable = new Table();
     Group *group = mediaTable->createGroup("New_group", std::cout);
-    SmartPtr v = mediaTable->createVideo("Star Wars", "starwars.mp4", 150);
+    SmartPtr v = mediaTable->createVideo("StarWars", "starwars.mp4", 150);
     SmartPtr image = mediaTable->createPhoto("cat", "cat.png", 100, 100);
     group->push_back(v);
     group->push_back(image);
@@ -27,6 +27,8 @@ int main(int argc, const char* argv[])
     //mediaTable->deleteMedia("Levitating", std::cout);
     mediaTable->showMedia("mec", std::cout);
     mediaTable->deleteMedia("Non", std::cout);
+    group->remove(image);
+    mediaTable->deleteMedia("cat", std::cout);
     // mediaTable->readAll("../mediatable");
     mediaTable->saveAll("../mediatable_test");  
 
