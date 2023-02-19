@@ -1,0 +1,47 @@
+\hypertarget{group_8h_source}{}\doxysection{group.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GROUP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GROUP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}multimedia.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ On\ crée\ une\ définition\ de\ type\ pour\ éviter\ d'écrire\ std::shared\_ptr<Multimedia>\ à\ chaque\ fois}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ }SmartPtr\ =\ std::shared\_ptr<Multimedia>;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_group}{Group}}\ :\ \textcolor{keyword}{public}\ std::list<SmartPtr>\{}
+\DoxyCodeLine{00014\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_group}{Group}}()\ :\ std::list<SmartPtr>()\{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ name\ =\ \textcolor{stringliteral}{"{}unnamed\_group"{}};}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_group}{Group}}(std::string\ groupname\_)\ :\ std::list<SmartPtr>()\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ name\ =\ groupname\_;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_group}{\string~Group}}()\{\};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ getGroupName()\{\textcolor{keywordflow}{return}\ name;\};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ showGroup(std::ostream\ \&\ s)\{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::list<SmartPtr>::iterator\ m\ =\ this-\/>begin();\ m\ !=\ this-\/>end();\ m++)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ m-\/>get()-\/>showObject(s);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ listGroup(std::ostream\ \&\ s)\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::list<SmartPtr>::iterator\ m\ =\ this-\/>begin();\ m\ !=\ this-\/>end();\ m++)\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ s\ <<\ m-\/>get()-\/>getTitle()\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ ;}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GROUP\_H}}
+
+\end{DoxyCode}

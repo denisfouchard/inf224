@@ -1,0 +1,52 @@
+\hypertarget{film_8h_source}{}\doxysection{film.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FILM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FILM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_film}{Film}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_video}{Video}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\ chapters;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chaptersCount;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_film}{Film}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_film}{Film}}(std::string\ title\_,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ std::string\ filename\_,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ duration\_,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\ chapters\_,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chaptersCount\_);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_film}{\string~Film}}()\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ chapters;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ getTitle()\ <<\ \textcolor{stringliteral}{"{}\ destroyed\ successfully."{}}\ <<\ endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\ getChapters()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ chapters;\}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ std::string\ classname()\textcolor{keyword}{\ const\ override\ }\{\textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}film"{}};\}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ setChapters(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\ chapters\_,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chaptersCount\_);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ getChaptersCount()\{\textcolor{keywordflow}{return}\ chaptersCount;\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::string\ printChapters();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ writeChapters(std::ostream\ \&f);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ readChapters(std::istream\ \&f);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ showObject(std::ostream\ \&s)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ write(std::ostream\ \&f)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ read(std::istream\ \&f)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FILM\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{class_client}{}\doxysection{Client Class Reference}
+\label{class_client}\index{Client@{Client}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_client_a163113b9c3fda23dcdc750db9278afbe}{Client}} (String host, int port)  throws Unknown\+Host\+Exception, IOException 
+\item 
+\mbox{\Hypertarget{class_client_a32d3777cf64491a14e10cbb830078d71}\label{class_client_a32d3777cf64491a14e10cbb830078d71}} 
+int {\bfseries get\+Port} ()
+\item 
+\mbox{\Hypertarget{class_client_a572d6cff0f731a01982a0c5fd0ed18f3}\label{class_client_a572d6cff0f731a01982a0c5fd0ed18f3}} 
+String {\bfseries get\+Host} ()
+\item 
+String \mbox{\hyperlink{class_client_ab26831c395da92b5893066f9ce7963a4}{send}} (String request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_client_a163113b9c3fda23dcdc750db9278afbe}\label{class_client_a163113b9c3fda23dcdc750db9278afbe}} 
+\index{Client@{Client}!Client@{Client}}
+\index{Client@{Client}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{Client()}{Client()}}
+{\footnotesize\ttfamily Client.\+Client (\begin{DoxyParamCaption}\item[{String}]{host,  }\item[{int}]{port }\end{DoxyParamCaption}) throws Unknown\+Host\+Exception, IOException\hspace{0.3cm}{\ttfamily [inline]}}
+
+Lit une requete depuis le Terminal, envoie cette requete au serveur, recupere sa reponse et l\textquotesingle{}affiche sur le Terminal. Noter que le programme bloque si le serveur ne repond pas. Initialise la connexion. Renvoie une exception en cas d\textquotesingle{}erreur. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_client_ab26831c395da92b5893066f9ce7963a4}\label{class_client_ab26831c395da92b5893066f9ce7963a4}} 
+\index{Client@{Client}!send@{send}}
+\index{send@{send}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily String Client.\+send (\begin{DoxyParamCaption}\item[{String}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Envoie une requete au server et retourne sa reponse. Noter que la methode bloque si le serveur ne repond pas. 
+\begin{DoxyParams}{Parameters}
+{\em request} & la requete a envoyer au serveur\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Client.\+java\end{DoxyCompactItemize}

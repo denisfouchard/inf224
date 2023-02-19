@@ -1,0 +1,118 @@
+\hypertarget{class_video}{}\doxysection{Video Class Reference}
+\label{class_video}\index{Video@{Video}}
+Inheritance diagram for Video\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_video}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_video_a5d34027dea6a285fd411a3f35702c047}\label{class_video_a5d34027dea6a285fd411a3f35702c047}} 
+{\bfseries Video} (std\+::string title\+\_\+, std\+::string filename\+\_\+, unsigned int duration\+\_\+)
+\item 
+\mbox{\Hypertarget{class_video_a7b4cdc1d40cb15c789de74c99fb318b9}\label{class_video_a7b4cdc1d40cb15c789de74c99fb318b9}} 
+int {\bfseries get\+Duration} ()
+\item 
+std\+::string \mbox{\hyperlink{class_video_aba3c3656a0755a1b5ce67bdb8fd434ce}{classname}} () const override
+\item 
+void \mbox{\hyperlink{class_video_ad6d488584eb33862ca0e89777bab5b71}{show\+Object}} (std\+::ostream \&s) override
+\item 
+void \mbox{\hyperlink{class_video_a2d543313235b4d5181440b9a8f73e707}{play}} () override
+\item 
+virtual void \mbox{\hyperlink{class_video_ac3ee4c8d6e0b869b906ba60946ed82e1}{write}} (std\+::ostream \&f) override
+\item 
+virtual void \mbox{\hyperlink{class_video_aed708efe215ef017b78dedfac881e0b6}{read}} (std\+::istream \&f) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_multimedia_a63b8d8ee63f9810c00d9ca74bf7d4243}\label{class_multimedia_a63b8d8ee63f9810c00d9ca74bf7d4243}} 
+{\bfseries Multimedia} (std\+::string title\+\_\+, std\+::string filename\+\_\+)
+\item 
+\mbox{\Hypertarget{class_multimedia_af361f491cc2d84e5d2c0dd4b7b0d9545}\label{class_multimedia_af361f491cc2d84e5d2c0dd4b7b0d9545}} 
+void {\bfseries set\+Title} (std\+::string title\+\_\+)
+\item 
+\mbox{\Hypertarget{class_multimedia_af295ca1bd6a34011ee6698cc0efbc13a}\label{class_multimedia_af295ca1bd6a34011ee6698cc0efbc13a}} 
+void {\bfseries set\+Filename} (std\+::string filename\+\_\+)
+\item 
+\mbox{\Hypertarget{class_multimedia_af90f2f08b6bc28fa5078a383033e9e43}\label{class_multimedia_af90f2f08b6bc28fa5078a383033e9e43}} 
+std\+::string {\bfseries get\+Title} ()
+\item 
+\mbox{\Hypertarget{class_multimedia_a32b269eba91544fa3570bacb29f6e4bf}\label{class_multimedia_a32b269eba91544fa3570bacb29f6e4bf}} 
+std\+::string {\bfseries get\+Filename} ()
+\item 
+\mbox{\Hypertarget{class_multimedia_a2f1e3dadb6cffae914d057e1c84282f7}\label{class_multimedia_a2f1e3dadb6cffae914d057e1c84282f7}} 
+virtual std\+::string {\bfseries classname} () const =0
+\item 
+\mbox{\Hypertarget{class_multimedia_a969905e0355cddd55a0c0d7b0f0600b8}\label{class_multimedia_a969905e0355cddd55a0c0d7b0f0600b8}} 
+virtual void {\bfseries show\+Object} (std\+::ostream \&s)
+\item 
+\mbox{\Hypertarget{class_multimedia_aae6b445f6e9865f1263deda7bdf9c42b}\label{class_multimedia_aae6b445f6e9865f1263deda7bdf9c42b}} 
+virtual void {\bfseries play} ()=0
+\item 
+\mbox{\Hypertarget{class_multimedia_a0a30dd963ab1a6ad05ad1fe5ce5bd1f2}\label{class_multimedia_a0a30dd963ab1a6ad05ad1fe5ce5bd1f2}} 
+virtual void {\bfseries write} (std\+::ostream \&f)
+\item 
+\mbox{\Hypertarget{class_multimedia_ae3278f47cb5425a460c2eb77d6cef9f7}\label{class_multimedia_ae3278f47cb5425a460c2eb77d6cef9f7}} 
+virtual void {\bfseries read} (std\+::istream \&f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_video_aba3c3656a0755a1b5ce67bdb8fd434ce}\label{class_video_aba3c3656a0755a1b5ce67bdb8fd434ce}} 
+\index{Video@{Video}!classname@{classname}}
+\index{classname@{classname}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{classname()}{classname()}}
+{\footnotesize\ttfamily std\+::string Video\+::classname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\mbox{\Hypertarget{class_video_a2d543313235b4d5181440b9a8f73e707}\label{class_video_a2d543313235b4d5181440b9a8f73e707}} 
+\index{Video@{Video}!play@{play}}
+\index{play@{play}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Video\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\mbox{\Hypertarget{class_video_aed708efe215ef017b78dedfac881e0b6}\label{class_video_aed708efe215ef017b78dedfac881e0b6}} 
+\index{Video@{Video}!read@{read}}
+\index{read@{read}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily virtual void Video\+::read (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\mbox{\Hypertarget{class_video_ad6d488584eb33862ca0e89777bab5b71}\label{class_video_ad6d488584eb33862ca0e89777bab5b71}} 
+\index{Video@{Video}!showObject@{showObject}}
+\index{showObject@{showObject}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{showObject()}{showObject()}}
+{\footnotesize\ttfamily void Video\+::show\+Object (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\mbox{\Hypertarget{class_video_ac3ee4c8d6e0b869b906ba60946ed82e1}\label{class_video_ac3ee4c8d6e0b869b906ba60946ed82e1}} 
+\index{Video@{Video}!write@{write}}
+\index{write@{write}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily virtual void Video\+::write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+video.\+h\end{DoxyCompactItemize}

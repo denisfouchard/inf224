@@ -1,0 +1,73 @@
+\hypertarget{photo_8h_source}{}\doxysection{photo.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PHOTO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PHOTO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}multimedia.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_photo}{Photo}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height\{\};}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width\{\};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_photo}{Photo}}():\mbox{\hyperlink{class_multimedia}{Multimedia}}()\{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ height\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ width\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_photo}{Photo}}(std::string\ title\_,\ std::string\ filename\_,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width\_):\mbox{\hyperlink{class_multimedia}{Multimedia}}(title\_,filename\_)\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ height\ =\ height\_;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ width\ =\ width\_;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_photo}{\string~Photo}}()\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::cout\ <<\ getTitle()\ <<\ \textcolor{stringliteral}{"{}\ destroyed\ successfully."{}}\ <<\ endl;}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ getHeight()\{\textcolor{keywordflow}{return}\ height;\}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ getWidth()\{\textcolor{keywordflow}{return}\ width;\}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ classname()\textcolor{keyword}{\ const\ override\ }\{\textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}photo"{}};\}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ showObject(std::ostream\ \&\ s)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ s\ <<\ getFilename()<<\ \textcolor{charliteral}{'\(\backslash\)n'}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ <<\ getTitle()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ <<\ getHeight()\ <<\ \textcolor{charliteral}{'x'}\ <<\ getWidth()\ <<}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ std::endl;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ play()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OS\ compatibility\ check}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ defined(\_\_APPLE\_\_)\ ||\ defined(\_\_MACH\_\_)}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}open\ -\/a\ Preview\ "{}}\ +\ getFilename()\ +\ \textcolor{stringliteral}{"{}\ \&"{}};}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#elif\ \_\_linux\_\_}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}imagej\ "{}}\ +\ getFilename()\ +\ \textcolor{stringliteral}{"{}\ \&"{}};}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ system(cmd.data());}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ write(std::ostream\ \&f)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ Multimedia::write(f);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ f\ <<\ height\ <<\ \textcolor{charliteral}{'\(\backslash\)n'}\ <<\ width\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ read(std::istream\ \&f)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ Multimedia::read(f);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ std::string\ h,\ w;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ getline(f,\ h);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ getline(f,\ w);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ height\ =\ stoi(h);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ width\ =\ stoi(w);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PHOTO\_H}}
+
+\end{DoxyCode}
