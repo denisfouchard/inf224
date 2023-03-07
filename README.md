@@ -22,7 +22,7 @@ cd swing
 make run
 ```
 **Pour compiler le client et le serveur C++ séparément**
-````
+```
 cd cpp
 make server
 make client
